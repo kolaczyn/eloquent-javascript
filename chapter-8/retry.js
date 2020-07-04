@@ -9,9 +9,12 @@ function primitiveMultiplyWrapper(a, b) {
   var out;
   while (out === undefined) {
     try {
-      console.log(out);
       out = primitiveMultiply(a, b);
-    } catch {}
+    } catch (e) {
+      if (e instanceof MultiplicatorUnitFailure)
+        console.log("primitiveMultiply error");
+      else throw e;
+    }
   }
   return out;
 }
